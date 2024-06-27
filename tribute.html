@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tribute Page</title>
+    <style>
+        .header img{
+            margin-left: 1093px;
+            margin-top: -1000px;
+        }
+        .name{
+            margin-left: 100px;
+            margin-top: 250px;
+            font-size: 100px;
+        }
+        .header h2{
+            margin-left: 400px;
+            font-size: 100px;
+        }
+        .family{
+            padding-top:190px;
+        }
+        .family img{
+            width: 300px;
+            height: 400px;
+        }
+        .family figure{
+            float: left;
+            display: inline;
+            padding-left: 100px;
+
+        }
+        .tree-chart ul {
+            padding-top: 20px;
+            position: relative;
+        }
+
+/* Make all children "inline" */
+        .tree-chart li {
+            float: left;
+            text-align: center;
+            list-style-type: none;
+            position: relative;
+            padding: 15px 2px 0 2px;
+        }
+
+/* Add horizontal connector. Note: they are 2 pseudo-elements */
+        .tree-chart li::before, .tree-chart li::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 50%;
+            width: 50%;
+            height: 25px;
+            z-index: -1;
+            border-top: 1px solid red;
+        }
+
+        .tree-chart li::after {
+            border-left: 1px solid green;
+            left: 50%;
+            right: auto;
+        }
+
+/* Remove left and right connector from a single child */
+        .tree-chart li:only-child::after, .tree-chart li:only-child::before {
+            display: none;
+        }
+
+        .tree-chart li:only-child {
+            padding-top: 0;
+        }
+
+/* Remove "outer" connector */
+        .tree-chart li:first-child::before, .tree-chart li:last-child::after {
+            border: 0 none;
+        }
+/* Add back the down connector for last node */
+        .tree-chart li:last-child::before {
+            border-right: 1px solid blue;
+            border-radius: 0 5px 0 0;
+        }
+
+/* Add curve line to the first child's connector */
+        .tree-chart li:first-child::after {
+            border-radius: 2px 0 0 0;
+        }
+
+
+/* Add down connector from parent */
+        .tree-chart ul ul::before {
+            content: '';
+            border-left: 1px solid magenta;
+            z-index: -1;
+            height: 20px;
+            position: absolute;
+            top: 0px;
+            left: 50%;
+            width: 0;
+        }
+
+/* Add cosmetic for each item */
+        .tree-chart li a {
+            font-size: 12px;
+            background-color: white;
+            border: 1px solid #ccc;
+            padding: 7px 8px;
+            text-decoration: none;
+            display: inline-block;
+            border-radius: 4px;
+        }
+
+        .tree-chart li a:hover {
+            background-color: #EEE;
+        }
+
+/* Experimental for multiple parents */
+/* Add margin for the parents */
+        .tree-chart li a+a {
+            position: relative;
+            margin-bottom: 12px;
+        }
+/* Implement also for the first parent */
+        .tree-chart li a:first-child {
+            position: relative;
+            margin-bottom: 12px;
+        }
+
+/* 
+- Add "down" connector (vertical line) from each parent 
+- Currently it will also select the single parent
+*/
+        .tree-chart li > a:not(:only-child)::after{
+            content: '';
+            position: absolute;
+            border-right: 1px solid pink;
+            top: 20px;
+            height: 20px;
+            width: 0;
+            left: 50%;
+            z-index: -1;
+        }
+
+/* Starting to fvcked up from here */
+
+/* Making the horizontal connector line after each multiple parent */
+        .tree-chart li > a:not(:only-of-type):not(:last-of-type)::before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: auto;
+            width: 100%;
+            border-top: 1px solid indigo;
+        }
+
+        .tree-chart li > a:last-of-type:not(:first-child)::before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            right: auto;
+            width: 100%;
+            border-top: 1px solid indigo;
+        }
+        details{
+            float: inline-start;
+            padding-left:150px;
+            padding-top: 50px;
+        }
+        .header{
+            background-image: url(background1.jpg) ;
+            background-repeat: no-repeat;
+            background-size:1750px 1750px; 
+            margin-top: -140px;    
+        }
+        .quote {
+            margin-top: 900px;
+            margin-left: 200px;
+        }
+        .quote blockquote{
+            margin-left: 1000px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .quote p{
+            font-size: 18px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+      </style>
+</head>
+<body>
+    <h1 style="text-align: center;">My Inspiration</h1>
+
+    <header class="header">
+        <h1 class="name" style="color: white;">Mr.K.DEMULLU</h1>
+        <h2 style="color: rgba(243, 243, 243, 0.84); margin-left:550px; margin-top: 90px;">is a Farmer</h2>
+        <img src="hero.png" alt="image" width="410px" height="410px">
+
+    </header>
+    <br><br><br>
+    <div class="about">
+        <h2>He is my father</h2>
+        <p style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">I'm proud to be his son. He sacrifices everything for me. 
+            He farms the land everyday. I want to help him dialy it is one of my best opportunity to help him in his work.
+            And he also drives the tractor. In other fields also he works more. 
+            He works a lot. He studied upto 10<sup>th</sup>class. But he losts his hallticket while he going to the exam.
+            Otherwise now he will be settled in a well position. That one day changes all his fate. He never regrets in his way. 
+            He worked daily and earn money and he looks his parents. In those days only by his hardwork and family members support he bought a tractor and land. 
+            He was the elder son of his parents. He took the entire responsibility of his family. If we listen his history we can write one book on his biography.
+            He always teaches his children to walk in a good path. He bought many things for his children. He feed his children everything what they wants. 
+            Sometimes I may thought he done his Ph.D in agriculture. He farms very well but due to the market conditions he left half of the farming and mostly he went for 
+            ploughing in other fields with tractor and he earns money and he invests his money in his farming.
+            He went for work in other districts and states in those days. 
+            He sacrificed his young age for his family responsibilities. And after his marriage he works alot in his agriculture land. And daily he went for the market by walk. He walked daily 30-50 km for the market to sold the vegetables.
+            In those days the villages are not grown up well. So there is no transportation. In case any emergency they ran for ten's kilometres for their needs.
+            He swims very well. He is my teacher in swimming. He teaches very well. 
+
+        </p>
+    </div>
+    <div class="tree-chart">
+        <h1 style="text-align: center;">Tree chart of the family </h1>
+        <ul>
+          <li>
+                <a href="#" class="">K.CHINNA RAMULU (Father)</a>
+                <a href="#" class="">K.DHALAMMA (Mother)</a>
+                <ul>
+                    <li>
+                        <a href="#">K.DEMULLU</a>
+                        <ul>
+                            <li><a href="#">K.CHINNATHALLI (W)</a></li>
+                            <li>
+                                <a href="#">K.ROOTHU  (D)</a>
+                                 <ul>
+                                    <li><a href="#">J.S.R.MURTHI (S-I-L)</a></li>
+                                    <li><a href="#">J. AKSHYA KEERTHI (G-D)</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">K.HEMANTH  (S)</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">K.M.NAIDU (B-1)</a>
+                        <ul>
+                            <li><a href="#">K.PARVATHI (W)</a></li>
+                            <li><a href="#">K.SANTHI  (D)</a></li>
+                            <li><a href="#">K.ERIMIYA (S)</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">K.RAJU (B-2)</a>
+                        <ul>
+                            
+                            <li><a href="#">K.PARMA JYOTHI (W)</a></li>
+                            <li><a href="#">K.PRAMEELA  (D-1)</a></li>
+                            <li><a href="#">K.DHEENA  (D-2) </a></li>
+                            
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+           
+        </ul>
+        <details>
+            <summary>B</summary>
+            <p>BROTHER</p>
+        </details>
+        <details>
+            <summary>W</summary>
+            <p>Wife</p>
+        </details>
+        <details>
+            <summary>D</summary>
+            <p>Daughter</p>
+        </details>
+        <details>
+            <summary>S</summary>
+            <p>SON</p>
+        </details>
+        <details>
+            <summary>S-I-L</summary>
+            <p>SON-IN-LAW</p>
+        </details>
+        <details>
+            <summary>G-D</summary>
+            <p>GRAND DAUGHTER</p>
+        </details>
+    </div><br><br><br><br><br><br>
+    <div class="family">
+        <br><br><br><br><br><br><br>
+        <h1 style="text-align: center;">Gallery</h1>
+        <br><br>
+        <figure>
+            <img src="grandpa.jpg" alt="grandpa">
+            <figcaption>Father- K.Chinna Ramulu</figcaption>
+        </figure> 
+        <figure>
+            <img src="grandma.jpg" alt="grandma">
+            <figcaption>Mother- K.Dhalamma</figcaption>
+        </figure> 
+        <figure>
+            <img src="mom.jpg" alt="mom">
+            <figcaption>Wife- K.Chinthalli</figcaption>
+        </figure>  
+        <figure>
+            <img src="sister.jpg" alt="sister">
+            <figcaption>Daughter-K.Roothu Kumari</figcaption>
+        </figure>        
+        <figure>
+            <img src="bava.jpg" alt="bava">
+            <figcaption>Son-in-law- J.Sri Ram Murthy</figcaption>
+        </figure>  
+        <figure>
+            <img src="son.jpg" alt="son">
+            <figcaption>Son- K.Hemanth Kumar</figcaption>
+        </figure>  
+    </div>
+    <br><br><br>
+    <div class="quote">
+        <h1>Farming Quotes</h1>
+      <p>------>Soil is a living ecosystem, and is a farmer's most precious asset. A farmer's productive capacity is directly ralted to the health of his or her soil.</p>  
+      <blockquote>Howard Warren Buffett</blockquote>
+      <p>------>I inherites that calm from my father, who was farmer. You sow, you wait for good or bad weather, you harvest, but working is something you always need to do.</p>
+      <blockquote>Miguel Indurain</blockquote>
+      <p>------>My dad farmed, my grandad was a farmer. I wanted to be a farmer.</p>
+      <blockquote>Sam Brownback</blockquote>
+      <p>------> dream is to be a farmer myself, but also to provide opportunities to others who don't have the land or the resources, in order to grow food themselves and teach them how to do it. </p>
+      <blockquote>Rose Namajunas</blockquote>
+    </div>
+    
+</body>
+</html>
